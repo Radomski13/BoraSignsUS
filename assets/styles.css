@@ -452,3 +452,27 @@ img{max-width:100%}
 .iacc-body.about-prod{padding-block:0 1.8rem;border-top:0}
 .iacc-body.faq{padding-block:0 1.8rem;border-top:0;gap:.2rem}
 .iacc-body .tpl-top{margin:0}
+
+/* Info accordions: clean chevron + mobile sizing */
+.iacc>summary{padding-block:1.15rem;padding-right:.25rem}
+.iacc>summary h2{line-height:1.2}
+.iacc>summary::after{width:9px;height:9px;margin-right:4px;transform:rotate(45deg);transform-origin:center}
+.iacc[open]>summary::after{transform:rotate(-135deg)}
+@media (max-width:760px){
+  .iacc>summary{padding-block:1rem}
+  .iacc>summary h2{font-size:1.15rem}
+  .iacc-body{padding-bottom:1.3rem}
+  .iacc-body.about-prod,.iacc-body.faq{padding-bottom:1.3rem}
+  .iacc-body .specs th,.iacc-body .specs td{padding:.6rem .5rem;font-size:.88rem}
+}
+
+/* "More ..." related products: 4 small cards */
+.blog .grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem}
+.blog .card .body{padding:.6rem .7rem .75rem;gap:.15rem}
+.blog .card h3{font-size:.95rem;line-height:1.25}
+.blog .card .from{font-size:.8rem}
+@media (max-width:760px){
+  .blog .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+  .blog .card h3{font-size:.9rem}
+}
+@media (min-width:761px){.blog .grid{max-width:860px}}
