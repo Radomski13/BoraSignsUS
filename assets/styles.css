@@ -438,3 +438,17 @@ img{max-width:100%}
 .card .art,.gallery .main,.thumbs button,.cat-tile .art{aspect-ratio:1/1;background:#fff}
 .card .art img,.gallery .main img,.thumbs img{object-fit:cover}
 .thumbs{grid-template-columns:repeat(auto-fill,minmax(64px,1fr))}
+
+/* product info accordions (closed by default) */
+.info-accs{border-top:1px solid var(--line);margin-top:1rem}
+.iacc{border-bottom:1px solid var(--line)}
+.iacc>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:1.3rem}
+.iacc>summary::-webkit-details-marker{display:none}
+.iacc>summary h2{font-family:var(--f-display);font-size:1.45rem;font-weight:900;margin:0}
+.iacc>summary::after{content:"";width:11px;height:11px;flex:none;border-right:2.5px solid var(--green);border-bottom:2.5px solid var(--green);transform:rotate(45deg) translateY(-3px);transition:transform .15s}
+.iacc[open]>summary::after{transform:rotate(-135deg) translateY(-2px)}
+.iacc>summary:hover h2{color:var(--green)}
+.iacc-body{padding-bottom:1.8rem}
+.iacc-body.about-prod{padding-block:0 1.8rem;border-top:0}
+.iacc-body.faq{padding-block:0 1.8rem;border-top:0;gap:.2rem}
+.iacc-body .tpl-top{margin:0}

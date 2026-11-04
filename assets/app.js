@@ -1,4 +1,4 @@
-/* PrintFly shared pricing + configurator markup. Used by the build (Node) and the browser (assets/app.js). */
+/* Bora Signs shared pricing + configurator markup. Used by the build (Node) and the browser (assets/app.js). */
 (function (root) {
   const tier = q => q>=2500?.3:q>=1000?.36:q>=500?.42:q>=250?.48:q>=100?.56:q>=50?.64:q>=25?.74:q>=10?.84:q>=5?.92:1;
   function interp(c,x){ if(x<=c[0][0]) return c[0][1]; for(let k=1;k<c.length;k++){ if(x<=c[k][0]){ const [x0,y0]=c[k-1],[x1,y1]=c[k]; return y0+(y1-y0)*(x-x0)/(x1-x0); } } const [xl,yl]=c[c.length-1]; return yl/xl*x; }
@@ -40,7 +40,7 @@
   if (typeof module!=='undefined' && module.exports) module.exports=api; else root.PF=api;
 })(this);
 
-/* ===== PrintFly storefront behaviour ===== */
+/* ===== Bora Signs storefront behaviour ===== */
 (function(){
 const {money,esc,modTag}=PF;
 const DISCOUNT_CODES = { /* 'CODE': 0.10  — add real codes here (fraction off) */ };
@@ -80,7 +80,7 @@ if(pdEl){
   const ab=$('accAll'); ab.addEventListener('click',()=>{ const accs=[...document.querySelectorAll('.accs details')]; const open=accs.some(d=>!d.open); accs.forEach(d=>d.open=open); ab.textContent=open?'Collapse all':'Expand all'; });
   const thumbs=document.querySelector('.thumbs');
   if(thumbs) thumbs.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; thumbs.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true'); const img=$('mainImg').querySelector('img'); img.src=b.dataset.src; img.alt=b.querySelector('img').alt; });
-  $('sizeHelp')?.addEventListener('click',()=>{ const f=$('faqs'); if(!f) return; f.querySelector('details')?.setAttribute('open',''); f.scrollIntoView({behavior:'smooth'}); });
+  $('sizeHelp')?.addEventListener('click',()=>{ const f=$('faqs'); if(!f) return; if(f.tagName==='DETAILS') f.open=true; f.querySelector('details')?.setAttribute('open',''); f.scrollIntoView({behavior:'smooth'}); });
   $('addBtn').addEventListener('click',()=>{
     const s=PF.curSize(p,sel), q=PF.curQty(p,sel), r=PF.price(p,sel);
     const opts=(p.opts||[]).map(([nm,ch],gi)=>`${nm}: ${ch[sel.o[gi]][0]}`);
@@ -130,7 +130,7 @@ if(form){
     e.preventDefault(); let ok=true;
     form.querySelectorAll('input[required]').forEach(el=>{ if(el.closest('[hidden]')){ el.closest('.fl')?.classList.remove('bad'); return; } const bad=!el.value.trim()||(el.type==='email'&&!/^\S+@\S+\.\S+$/.test(el.value)); el.closest('.fl')?.classList.toggle('bad',bad); if(bad) ok=false; });
     $('coErr').hidden=ok; $('coErr').textContent='Enter the highlighted fields to continue.'; if(!ok){ form.querySelector('.fl.bad input')?.focus(); return; }
-    const t=totals(); const no='PF-'+Date.now().toString(36).toUpperCase().slice(-6);
+    const t=totals(); const no='BS-'+Date.now().toString(36).toUpperCase().slice(-6);
     form.elements.namedItem('order_number').value=no; form.elements.namedItem('order_total').value=money(t.total); form.elements.namedItem('discount_code').value=co.disc?co.code:'';
     form.elements.namedItem('order_items').value=cart.map((l,i)=>`${i+1}. ${l.name} — ${l.size} — Qty ${l.qty} — ${money(l.total)}\n   ${l.opts.join('\n   ')}${l.notes?'\n   Notes: '+l.notes:''}`).join('\n\n')+`\n\nSubtotal ${money(t.sub)} | Discount ${money(t.d)} | ${co.method==='pickup'?'Pickup':'Shipping'} ${money(t.ship)} | Rush ${money(t.r)} | TOTAL ${money(t.total)}`;
     const btn=form.querySelector('.co-pay'); btn.disabled=true; btn.textContent='Placing order…';
