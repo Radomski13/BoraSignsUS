@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Checkout | PrintFly</title>
+<meta name="description" content="Checkout">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:site_name" content="PrintFly">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Checkout | PrintFly">
+<meta property="og:description" content="Checkout">
+<meta property="og:url" content="https://www.printfly.com/checkout/">
+<meta property="og:image" content="https://www.printfly.com/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#084a32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800;900&family=Public+Sans:wght@400;500;600;700&family=Overpass+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="/assets/styles.css">
+
+</head>
+<body>
+<div class="co">
+<header class="co-top"><div class="co-topin"><a class="logo" href="/" style="color:var(--fg)"><svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="9" fill="var(--green)"/><path d="M11 29V11h10.5a6 6 0 0 1 0 12H16" fill="none" stroke="var(--yellow)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 29l5-5" stroke="var(--green-ink)" stroke-width="3" stroke-linecap="round"/></svg>PrintFly</a><a class="icon-btn" href="/cart/" aria-label="Back to cart" style="color:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></a></div></header>
+<button type="button" class="co-sumbar" id="sumbar" aria-expanded="false"><span>Order summary <span id="sumchev">▾</span></span><b class="mono" id="sumbarTotal"></b></button>
+<div class="co-summ" id="sumMobile" hidden></div>
+<div class="co-grid">
+<form class="co-main" id="coForm" name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" novalidate>
+  <input type="hidden" name="form-name" value="order">
+  <p hidden><label>Leave this empty <input name="bot-field"></label></p>
+  <input type="hidden" name="order_number"><input type="hidden" name="order_total"><input type="hidden" name="discount_code">
+  <textarea name="order_items" hidden></textarea>
+  <section class="co-sec"><div class="co-h"><h2>Contact</h2></div><label class="fl " for="email"><input id="email" name="email" type="email" placeholder=" " autocomplete="email" required><span>Email</span></label><label class="co-chk" for="news"><input type="checkbox" id="news" name="email_offers" value="yes"> Email me with news and offers</label></section>
+  <section class="co-sec"><h2>Delivery</h2>
+    <div class="co-opts"><label class="co-opt sel" for="m-ship"><input type="radio" name="method" id="m-ship" value="ship" checked><span>Ship</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6h12v10H2zM14 10h4l3 3v3h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="6" cy="18" r="2" fill="currentColor"/><circle cx="17" cy="18" r="2" fill="currentColor"/></svg></label><label class="co-opt" for="m-pickup"><input type="radio" name="method" id="m-pickup" value="pickup"><span>Pick up</span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 8V5h8v3M3 13h18" fill="none" stroke="currentColor" stroke-width="2"/></svg></label></div>
+    <div id="shipFields" class="co-fields">
+      <label class="fl full" for="country"><select id="country" name="country" autocomplete="country-name"><option>United States</option></select><span>Country/Region</span></label>
+      <label class="fl " for="fname"><input id="fname" name="fname" type="text" placeholder=" " autocomplete="given-name"><span>First name (optional)</span></label><label class="fl " for="lname"><input id="lname" name="lname" type="text" placeholder=" " autocomplete="family-name" required><span>Last name</span></label><label class="fl full" for="company"><input id="company" name="company" type="text" placeholder=" " autocomplete="organization"><span>Company (optional)</span></label><label class="fl full" for="address"><input id="address" name="address" type="text" placeholder=" " autocomplete="street-address" required><span>Address</span></label><label class="fl full" for="apt"><input id="apt" name="apt" type="text" placeholder=" " autocomplete="address-line2"><span>Apartment, suite, etc. (optional)</span></label>
+      <div class="co-row3 full"><label class="fl " for="city"><input id="city" name="city" type="text" placeholder=" " autocomplete="address-level2" required><span>City</span></label><label class="fl" for="state"><select id="state" name="state" autocomplete="address-level1"><option>Florida</option><option>Alabama</option><option>Georgia</option><option>North Carolina</option><option>South Carolina</option><option>Tennessee</option><option>Texas</option><option>New York</option><option>California</option><option>Other</option></select><span>State</span></label><label class="fl " for="zip"><input id="zip" name="zip" type="text" placeholder=" " autocomplete="postal-code" required><span>ZIP code</span></label></div>
+      <label class="fl full" for="phone"><input id="phone" name="phone" type="tel" placeholder=" " autocomplete="tel" required><span>Phone</span></label>
+    </div>
+    <div id="pickupBox" hidden><div class="co-box"><div class="co-boxrow sel"><div><b>PrintFly pickup</b><small>[Add pickup address]</small><small>Usually ready in 2–3 business days</small></div><b>FREE</b></div></div><label class="fl " for="pickup_phone"><input id="pickup_phone" name="pickup_phone" type="tel" placeholder=" " autocomplete="tel" required><span>Phone for pickup updates</span></label></div>
+  </section>
+  <section class="co-sec"><h2>Production speed</h2><div class="co-box">
+    <label class="co-boxrow sel" for="sp-std"><input type="radio" name="speed" id="sp-std" value="std" checked><div><b>Standard</b><small>Ships 2–3 business days after proof approval</small></div><b class="mono">Included</b></label>
+    <label class="co-boxrow" for="sp-rush"><input type="radio" name="speed" id="sp-rush" value="rush"><div><b>Rush</b><small>Ships next business day after proof approval</small></div><b class="mono">+25%</b></label></div></section>
+  <section class="co-sec"><h2>Artwork</h2><p class="co-sub">Upload a file for each item, or leave it blank and email it after you order. PDF, AI, EPS, PNG or JPG.</p>
+    <div class="co-arts" id="artList"></div>
+    <input type="file" id="artwork_1" name="artwork_1" accept=".pdf,.ai,.eps,.png,.jpg,.jpeg,.svg" hidden><input type="file" id="artwork_2" name="artwork_2" accept=".pdf,.ai,.eps,.png,.jpg,.jpeg,.svg" hidden><input type="file" id="artwork_3" name="artwork_3" accept=".pdf,.ai,.eps,.png,.jpg,.jpeg,.svg" hidden><input type="file" id="artwork_4" name="artwork_4" accept=".pdf,.ai,.eps,.png,.jpg,.jpeg,.svg" hidden><input type="file" id="artwork_5" name="artwork_5" accept=".pdf,.ai,.eps,.png,.jpg,.jpeg,.svg" hidden><input type="file" id="artwork_6" name="artwork_6" accept=".pdf,.ai,.eps,.png,.jpg,.jpeg,.svg" hidden><input type="file" id="artwork_7" name="artwork_7" accept=".pdf,.ai,.eps,.png,.jpg,.jpeg,.svg" hidden><input type="file" id="artwork_8" name="artwork_8" accept=".pdf,.ai,.eps,.png,.jpg,.jpeg,.svg" hidden>
+  </section>
+  <section class="co-sec"><h2>Payment</h2><p class="co-sub">All transactions are secure and encrypted.</p><div class="co-box">
+    <label class="co-boxrow sel" for="pay-card"><input type="radio" name="payment" id="pay-card" value="card" checked><div><b>Credit card</b></div><span class="co-cards"><i>VISA</i><i>MC</i><i>AMEX</i><i>+</i></span></label>
+    <div class="co-paypanel" id="cardPanel"><div class="pay-slot"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 7V4h6v3" fill="none" stroke="currentColor" stroke-width="2"/></svg><div><b>Card fields load here</b><small>Your payment processor's secure card form goes in this panel.</small></div></div></div>
+    <label class="co-boxrow" for="pay-inv"><input type="radio" name="payment" id="pay-inv" value="invoice"><div><b>Pay by invoice</b><small>Trade accounts with approved net terms</small></div></label></div>
+    <h3 class="co-h3">Billing address</h3><div class="co-box">
+    <label class="co-boxrow sel" for="bill-same"><input type="radio" name="billing" id="bill-same" value="same" checked><div><b>Same as shipping address</b></div></label>
+    <label class="co-boxrow" for="bill-diff"><input type="radio" name="billing" id="bill-diff" value="different"><div><b>Use a different billing address</b></div></label>
+    <div class="co-paypanel co-fields" id="billFields" hidden><label class="fl full" for="bill_name"><input id="bill_name" name="bill_name" type="text" placeholder=" " autocomplete="name"><span>Name on bill</span></label><label class="fl full" for="bill_address"><input id="bill_address" name="bill_address" type="text" placeholder=" " autocomplete="street-address"><span>Billing address</span></label><label class="fl full" for="bill_zip"><input id="bill_zip" name="bill_zip" type="text" placeholder=" " autocomplete="postal-code"><span>ZIP code</span></label></div></div></section>
+  <p class="fs-err" id="coErr" hidden></p>
+  <button class="co-pay" type="submit">Place order</button>
+  <p class="co-note">We'll email a proof before anything prints. You aren't charged until you approve it.</p>
+  <footer class="co-foot"><a href="/return-policy/">Return policy</a><a href="/shipping-policy/">Shipping</a><a href="/privacy-policy/">Privacy policy</a><a href="/terms/">Terms of service</a><a href="/contact/">Contact</a></footer>
+</form>
+<aside class="co-side"><div class="co-sidein" id="sumDesk"></div></aside>
+</div></div>
+<script src="/assets/app.js" defer></script>
+</body></html>

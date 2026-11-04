@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /order-confirmed/
+
+Sitemap: https://www.printfly.com/sitemap.xml
